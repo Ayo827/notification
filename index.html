@@ -33,26 +33,26 @@
         // Request notification permission on a user gesture
         document.getElementById('notificationButton').addEventListener('click', () => {
             
-            Notification.requestPermission().then((permission) => {
-                console.log("notification button");
-                console.log(permission)
-                if (permission === 'granted') {
-                    // Get the FCM registration token
-                    messaging.getToken().then((token) => {
-                        console.log('FCM Token:', token);
+         Notification.requestPermission().then((permission) => {
+    console.log("notification button");
+    console.log(permission);
+    if (permission === 'granted') {
+        // Get the FCM registration token
+        messaging.getToken().then((token) => {
+            console.log('FCM Token:', token);
 
-                        // Now you can send this token to your server for processing
-                        // For testing purposes, you can print it out or use it in other ways
-                    }).catch((error) => {
-                        console.error('Error getting FCM token:', error);
-                    });
-                } else if (permission === 'denied') {
-                    console.warn('Notification permission denied. Please enable notifications in your browser settings.');
-                }
-            }).catch((error) => {
-                console.error('Error requesting notification permission:', error);
-            });
+            // Now you can send this token to your server for processing
+            // For testing purposes, you can print it out or use it in other ways
+        }).catch((error) => {
+            console.error('Error getting FCM token:', error);
         });
+    } else if (permission === 'denied') {
+        console.warn('Notification permission denied. Please enable notifications in your browser settings.');
+    }
+}).catch((error) => {
+    console.error('Error requesting notification permission:', error);
+});
+
     </script>
 
 <script type="module">
