@@ -32,6 +32,7 @@
 
         // Request notification permission on a user gesture
         document.getElementById('notificationButton').addEventListener('click', () => {
+            console.log("notification button")
             Notification.requestPermission().then((permission) => {
                 if (permission === 'granted') {
                     // Get the FCM registration token
